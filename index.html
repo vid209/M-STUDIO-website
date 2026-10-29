@@ -1,192 +1,207 @@
 <!DOCTYPE html>
-
-<html lang=«ru»><head><meta http-equiv=«Content-Type» content=«text/html; charset=UTF-8»>
-
-<title>M-Studio</title>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M-Studio — Игры</title>
 <style>
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-background: radial-gradient(1200px 600px at 50% -10%, #1c1c24 0%, #0d0d0f 60%, #0a0a0b 100%);
-font-family: 'Segoe UI', Arial, sans-serif;
-margin: 0;
-padding: 0;
-color: #e6e6e6;
-min-height: 100vh;
+  background: radial-gradient(1200px 600px at 50% -10%, #1c1c24 0%, #0d0d0f 60%, #0a0a0b 100%);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #e6e6e6;
+  min-height: 100vh;
 }
 
 .container {
-max-width: 960px;
-margin: auto;
-padding: 20px;
+  max-width: 960px;
+  margin: auto;
+  padding: 20px;
 }
 
 header {
-border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-padding-bottom: 20px;
-margin-bottom: 30px;
-text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 h1 {
-font-size: 34px;
-text-transform: uppercase;
-letter-spacing: 4px;
-margin: 0;
-color: #ffffff;
-text-shadow: 0 0 24px rgba(120, 140, 255, 0.45);
+  font-size: 34px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin: 0;
+  color: #f0f0f0;
+  text-shadow: 0 0 24px rgba(120, 140, 255, 0.45);
 }
 
 .subtitle {
-font-size: 16px;
-color: #8a8a9a;
-margin-top: 8px;
-font-style: italic;
+  font-size: 16px;
+  color: #8a8a9a;
+  margin-top: 8px;
+  font-style: italic;
 }
 
 .social-links {
-margin-top: 16px;
+  margin-top: 16px;
 }
 
 .social-links a {
-display: inline-block;
-margin: 0 6px;
-text-decoration: none;
-color: #dcdce6;
-border: 1px solid rgba(255, 255, 255, 0.15);
-padding: 8px 20px;
-background: rgba(255, 255, 255, 0.05);
-border-radius: 24px;
-backdrop-filter: blur(6px);
-transition: all 0.25s ease;
+  display: inline-block;
+  margin: 0 6px;
+  text-decoration: none;
+  color: #dcdce6;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  backdrop-filter: blur(6px);
+  transition: all 0.25s ease;
 }
 
 .social-links a:hover {
-background: rgba(120, 140, 255, 0.18);
-border-color: rgba(120, 140, 255, 0.6);
-box-shadow: 0 0 16px rgba(120, 140, 255, 0.35);
-transform: translateY(-2px);
+  background: rgba(120, 140, 255, 0.18);
+  border-color: rgba(120, 140, 255, 0.6);
+  box-shadow: 0 0 16px rgba(120, 140, 255, 0.35);
+  transform: translateY(-2px);
 }
 
 .games-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 22px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
 }
 
 .game-card {
-border: 1px solid rgba(255, 255, 255, 0.1);
-background: linear-gradient(160deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
-border-radius: 18px;
-padding: 24px 16px;
-text-align: center;
-transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-radius: 18px;
+  padding: 16px 16px 24px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .game-card:hover {
-transform: translateY(-4px);
-border-color: rgba(120, 140, 255, 0.45);
-box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+  transform: translateY(-4px);
+  border-color: rgba(120, 140, 255, 0.45);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+}
+
+.game-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover .game-thumb {
+  transform: scale(1.03);
 }
 
 .game-title {
-font-weight: bold;
-font-size: 19px;
-margin-bottom: 8px;
-color: #ffffff;
-letter-spacing: 0.5px;
+  font-weight: bold;
+  font-size: 19px;
+  margin-bottom: 8px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
 .game-card p {
-color: #9a9aa8;
-font-size: 14px;
-margin: 0 0 6px;
+  color: #9a9aa8;
+  font-size: 14px;
+  margin: 0 0 6px;
+}
+
+.play-btn,
+.download-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 24px;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: all 0.25s ease;
 }
 
 .play-btn {
-display: inline-block;
-margin-top: 10px;
-padding: 10px 24px;
-background: linear-gradient(135deg, #3ddc84, #1faa5a);
-color: #ffffff;
-text-decoration: none;
-border-radius: 10px;
-font-weight: bold;
-transition: all 0.25s ease;
+  background: linear-gradient(135deg, #3ddc84, #1faa5a);
 }
 
 .play-btn:hover {
-box-shadow: 0 0 18px rgba(61, 220, 132, 0.45);
-transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(61, 220, 132, 0.45);
+  transform: translateY(-2px);
 }
 
 .download-btn {
-display: inline-block;
-margin-top: 10px;
-padding: 10px 24px;
-background: linear-gradient(135deg, #ff7043, #e64a19);
-color: #ffffff;
-text-decoration: none;
-border-radius: 10px;
-font-weight: bold;
-transition: all 0.25s ease;
+  background: linear-gradient(135deg, #ff7043, #e64a19);
 }
 
 .download-btn:hover {
-box-shadow: 0 0 18px rgba(255, 112, 67, 0.45);
-transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(255, 112, 67, 0.45);
+  transform: translateY(-2px);
 }
 
 footer {
-margin-top: 36px;
-border-top: 1px solid rgba(255, 255, 255, 0.08);
-padding-top: 16px;
-font-size: 13px;
-color: #6a6a78;
-text-align: center;
+  margin-top: 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 16px;
+  font-size: 13px;
+  color: #6a6a78;
+  text-align: center;
 }
 </style>
-
 </head>
 <body>
-<div class=«container»>
-<header>
-<h1 style=«color:#f0f0f0»>M-Studio</h1>
-<p class=«subtitle»>Наш сайт тут!</p>
-<div class=«social-links»>
-<a class=«canal333» href=«web.telegram.org/k/#@M209studio»>Telegram</a>
-<a class=«canal333» href=«vk.ru/im/channels/-240709384?entrypoint=channel&tab=all»>VK</a>
-</div>
-</header>
+<div class="container">
+  <header>
+    <h1>M-Studio</h1>
+    <p class="subtitle">Наш сайт тут!</p>
+    <div class="social-links">
+      <a href="https://web.telegram.org/k/#@M209studio" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://vk.ru/im/channels/-240709384?entrypoint=channel&tab=all" target="_blank" rel="noopener">VK</a>
+    </div>
+  </header>
 
-<section class=«games-grid»>
-<!-- Кликер -->
-<div class=«game-card»>
-<div class=«game-title»>M-Clicker</div>
-<p>Кликер в браузере</p>
-<a href=«play.unity.com/ru/user/9dacca9a-b93f-41fa-813d-e3bcbfc03d3d» class=«play-btn» target="_blank">Играть</a>
-</div>
+  <section class="games-grid">
+   
+    <div class="game-card">
+      <img class="game-thumb" src="content.webp" alt="M-Clicker">
+      <div class="game-title">M-Clicker</div>
+      <p>Кликер в браузере</p>
+      <a href="https://play.unity.com/ru/user/9dacca9a-b93f-41fa-813d-e3bcbfc03d3d" class="play-btn" target="_blank" rel="noopener">Играть</a>
+    </div>
 
-<!-- Танчики -->
-<div class=«game-card»>
-<div class=«game-title»>Tank Brawl</div>
-<p>Танковые сражения онлайн</p>
-<a href=«vid209.github.io/Tank-Brawl/» class=«play-btn» target="_blank">Играть</a>
-</div>
+    
+    <div class="game-card">
+      <img class="game-thumb" src="тнк.png" alt="Tank Brawl">
+      <div class="game-title">Tank Brawl</div>
+      <p>Танковые сражения онлайн</p>
+      <a href="https://vid209.github.io/Tank-Brawl/" class="play-btn" target="_blank" rel="noopener">Играть</a>
+    </div>
 
-<!-- Змейка -->
-<div class=«game-card»>
-<div class=«game-title»>Змейка</div>
-<p>Классическая змейка для ПК</p>
-<a href=«drive.google.com/file/d/1tSiTzl4d2FcMw7dnRFQSm88eKmQVpbzB/view?usp=drive_link» class=«download-btn» download="">Скачать EXE</a>
-</div>
-</section>
+    
+    <div class="game-card">
+      <img class="game-thumb" src="haj-3.png" alt="Змейка">
+      <div class="game-title">Змейка</div>
+      <p>Классическая змейка для ПК</p>
+      <a href="https://drive.google.com/file/d/1tSiTzl4d2FcMw7dnRFQSm88eKmQVpbzB/view?usp=drive_link" class="download-btn" download>Скачать EXE</a>
+    </div>
+  </section>
 
-<footer>
-© 2026 M-Studio.
-</footer>
+  <footer>
+    © 2026 M-Studio.
+  </footer>
 </div>
-
-</body></html>
+</body>
+</html>
